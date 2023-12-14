@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
- 
+const mongoose = require("mongoose");
+
 const salesOrderSchema = new mongoose.Schema({
   _id: {
     type: mongoose.Schema.Types.ObjectId,
@@ -154,7 +154,7 @@ const salesOrderSchema = new mongoose.Schema({
     required: true,
   },
 });
- 
-const SalesOrder = mongoose.model('sales_orders', salesOrderSchema, 'sales_orders');
- 
+
+const SalesOrder = mongoose.model("sales_orders", salesOrderSchema);
+
 module.exports = SalesOrder;

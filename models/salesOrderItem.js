@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 // Define the schema
 const salesOrderItemSchema = new mongoose.Schema({
@@ -26,11 +26,11 @@ const salesOrderItemSchema = new mongoose.Schema({
   updated_at: Date,
   unit_of_measurement: String,
   discount_rate: Number,
-  free_quantity: Number
+  free_quantity: Number,
 });
 
 // Create the model
-const SalesOrderItem = mongoose.model('sales_order_items', salesOrderItemSchema, 'sales_order_items');
+const SalesOrderItem = mongoose.model("SalesOrderItem", salesOrderItemSchema);
 
 // Export the model
 module.exports = SalesOrderItem;
