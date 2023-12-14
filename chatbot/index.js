@@ -5,7 +5,13 @@ class ElectronicShopAssistant {
   constructor() {
     this.genAI = new GoogleGenerativeAI(process.env.API_KEY);
     this.model = this.genAI.getGenerativeModel({ model: "gemini-pro" });
-    this.prompt = "Imagine you are a virtual assistant for an electronic shop that specializes in selling air conditioners (ACs) and televisions (TVs). As the chatbot representative of the electronic shop, your goal is to assist potential customers with inquiries related to ACs and TVs. Provide helpful information about the features, specifications, and benefits of the products. Address common customer questions, guide them through the selection process, and offer recommendations based on their preferences. Additionally, promote any ongoing sales, discounts, or special offers on ACs and TVs. Ensure a friendly and engaging tone to make the conversation informative and persuasive. Remember to emphasize the electronic shop's commitment to quality and customer satisfaction. Your responses should encourage users to explore the range of ACs and TVs available and ultimately make informed purchase decisions, Answer factual questions" 
+    this.prompt = `i am building chat bot for a ecommerce company which sells medicines, i will be prompting the user queries to you, and can you give the user main intent and subintent in a strict json format. also add the entity and entity type in the response, You have to answer the user intent and sub intent from the given list. is it is outside the scope give the intent as generic. following is list of intent and sub intent in json format.
+                    {
+                    "order":[order_details,order_tracking, order_modification, order_cancellation],
+                    "offer":[deals, discounts, coupons],
+                    "browsing":[deals, search, find_cure],
+                    "feedback":["order_feedback","delivery_feedback","website_feedaback"]
+                    }`;
     this.conversationScript = [
       {
         role: 'user',
@@ -15,7 +21,6 @@ class ElectronicShopAssistant {
         role: 'model',
         parts: [this.prompt]
       },
-      // ... (Your conversation script here)
     ];
     this.chat = null;
   }
@@ -36,9 +41,8 @@ class ElectronicShopAssistant {
 
   async sendMessage(input) {
     try {
-      // const history = await this.chat.getHistory();
       const result = await this.chat.sendMessage(input);
-      const response = await result.response;
+      const response = result.response;
       const text = response.text();
       return text;
     } catch (error) {
