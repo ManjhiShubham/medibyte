@@ -1,7 +1,7 @@
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 require('dotenv').config();
 
-class ElectronicShopAssistant {
+class Assistant {
   constructor() {
     this.genAI = new GoogleGenerativeAI(process.env.API_KEY);
     this.model = this.genAI.getGenerativeModel({ model: "gemini-pro" });
@@ -11,7 +11,7 @@ class ElectronicShopAssistant {
                     "offer":[deals, discounts, coupons],
                     "browsing":[deals, search, find_cure],
                     "feedback":["order_feedback","delivery_feedback","website_feedaback"]
-                    }`;
+                    } output should be js object without don't send result as string`;
     this.conversationScript = [
       {
         role: 'user',
@@ -52,6 +52,6 @@ class ElectronicShopAssistant {
 }
 
 // Example usage
- module.exports = ElectronicShopAssistant;
+ module.exports = Assistant;
 
 

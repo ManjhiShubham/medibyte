@@ -13,8 +13,13 @@ var app = express();
 
 var port = '3000';
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+const mongoose = require("mongoose");
+  const uri = "mongodb+srv://admin:root@cluster0.oe1gu.mongodb.net/?retryWrites=true&w=majority";
+  
+  // Create a MongoClient with a MongoClientOptions object to set the Stable API version
+  
+app.listen(port, async () => {
+  await mongoose.connect( "mongodb+srv://admin:root@cluster0.oe1gu.mongodb.net/?retryWrites=true&w=majority");
 });
 
 // view engine setup
