@@ -14,12 +14,17 @@ var app = express();
 var port = '3000';
 
 const mongoose = require("mongoose");
-  const uri = "mongodb+srv://admin:root@cluster0.oe1gu.mongodb.net/?retryWrites=true&w=majority";
+const uri = "mongodb+srv://admin:root@cluster0.oe1gu.mongodb.net/HackEasyChatBot?retryWrites=true&w=majority";
   
   // Create a MongoClient with a MongoClientOptions object to set the Stable API version
   
 app.listen(port, async () => {
-  await mongoose.connect( "mongodb+srv://admin:root@cluster0.oe1gu.mongodb.net/?retryWrites=true&w=majority");
+  try{
+  await mongoose.connect(uri);
+  console.log("database connected")
+  }catch(e){
+    console.log("error", e.message);
+  }
 });
 
 // view engine setup
