@@ -28,7 +28,7 @@ module.exports.getSalesOrders = async (req, res, next) => {
 
 module.exports.lastNOrders = async (req, res, next) => {
   const specificBuyerPartyId = 91;
-  const numberOfOrdersToRetrieve = JSON.parse(req.query.limit);
+  const numberOfOrdersToRetrieve = JSON.parse(req.params.days);
 
   SalesOrder.find({
     buyer_party_id: specificBuyerPartyId,

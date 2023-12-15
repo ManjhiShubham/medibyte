@@ -17,13 +17,15 @@ router.get("/", async function (req, res, next) {
     .trim();
   const jsonResponse = JSON.parse(trimmedResult);
   req.intent = trimmedResult;
-  console.log(typeof req.intent);
-  if (!req.intent[0].intent in ["abstract", "generic"]) {
+  console.log(JSON.parse(req.intent).intent[0]);
+  if (JSON.parse(req.intent).intent[0] === 'abstract') {
+        res.send(jsonResponse.response);
+
   } else {
     console.log("hello");
-    await intentApiController(req, res);
+    console.log(req.intent);
+        await intentApiController(req, res);
 
-    res.send(jsonResponse.response);
   }
 });
 
