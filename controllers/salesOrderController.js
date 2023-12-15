@@ -2,28 +2,21 @@ const path = require("path");
 const rootDir = path.dirname(require.main.filename);
 const User = require("../models/user");
 const SalesOrder = require("../models/salesOrder");
+const SalesOrderItem = require("../models/salesOrderItem");
 require("dotenv").config();
 
 module.exports.getSalesOrders = async (req, res, next) => {
   try {
-    // const buyer_party_id = parseInt(req.query.id);
-    // if (isNaN(buyer_party_id)) {
-    //   return res.status(400).send("Invalid order ID");
-    // }
-    const excludedStatuses = [
-      "short_closed",
-      "cancelled",
-      "draft",
-      "pre_draft",
-    ];
-    const specificBuyerPartyId = 91;
-    const order = await SalesOrder.find({
-      buyer_party_id: specificBuyerPartyId,
-      status: { $nin: excludedStatuses },
-    });
-    console.log(order);
-    if (order) {
-      res.json(order);
+    const orderId = parseInt(req.params.id);
+    console.log("orderId", orderId);
+    if (isNaN(orderId)) {
+      return res.status(400).send("Invalid order ID");
+    }
+
+    const order = await SalesOrder.findOne({ id: orderId });
+    const orderItems = await SalesOrderItem.find({ sales_order_id: orderId });
+    if (order && orderItems) {
+      res.json({ order: order, orderItems: orderItems });
     } else {
       res.status(404).send("Order not found");
     }
