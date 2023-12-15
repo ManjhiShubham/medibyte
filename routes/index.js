@@ -10,7 +10,7 @@ assistant.initializeChat();
 router.get("/", async function (req, res, next) {
   var query = req.query;
   const result = await assistant.sendMessage(query.msg);
-  const trimmedResult = result.replace(/`+/g, '').replace(/^json/gi, '').trim();
+  const trimmedResult = result.replace(/`+/g, '').replace(/^json/gi, '').replace(/^js/gi, '').trim();
   const jsonResponse = JSON.parse(trimmedResult);
   console.log(jsonResponse);
   res.send(jsonResponse);

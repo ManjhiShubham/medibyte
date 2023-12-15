@@ -38,13 +38,22 @@ module.exports = {
           }
         }
       ]
+    },
+    {
+      intent: 'abstract',
+      Response_format:{
+        intent:'abstract',
+        response:"generate response, suppose you are a virtual doctor Ai and generate response, for this type, carefully try to understand the question and answer the generic recommendation and suggestions as response"
+        
+      }
     }
   ],
   constraints: [
     'The "intent" field must be an array containing a single string, representing the primary user intent.',
     'The "subIntent" field must be an array containing a single string, indicating the specific sub-intent under the main intent.',
     'response of the query should strictly follow the format provided, if not use response by provided templates',
-    'response should be strictly be in js object format and exclude characters such as colon, semicolon, tilt etc, such that it can easily fed to js language'
-  
+    'response should be strictly be in js object format and exclude characters such as colon, semicolon, tilt etc, such that it can easily fed to js language',
+    'response should start with {}, curly braces',
+    'for intent type abstract, imagine yourself as a doctor and recommend the suggestions for question, and dont return subIntent'
   ]
  }
