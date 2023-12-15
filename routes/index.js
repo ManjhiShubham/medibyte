@@ -10,7 +10,7 @@ const intentApiController = require("../controllers/intentApiMappingController")
 router.get("/", async function (req, res, next) {
   var query = req.query;
   const result = await assistant.sendMessage(query.msg);
-  const trimmedResult = result.replace(/`+/g, '').replace(/^json/gi, '').trim();
+  const trimmedResult = result.replace(/`+/g, '').replace(/^json/gi, '').replace(/^js/gi, '').trim();
   const jsonResponse = JSON.parse(trimmedResult);
   req.intent = trimmedResult
   await intentApiController(req, res)
