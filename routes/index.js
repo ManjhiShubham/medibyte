@@ -13,10 +13,10 @@ router.get("/", async function (req, res, next) {
   const trimmedResult = result.replace(/`+/g, '').replace(/^json/gi, '').replace(/^js/gi, '').trim();
   const jsonResponse = JSON.parse(trimmedResult);
   req.intent = trimmedResult
-  if (!req.intent.intent in ['abstract', 'generic']) {
+  if (jsonResponse.intent[0] != 'abstract' &&  jsonResponse.intent[0] != 'generic') {
     await intentApiController(req, res)
   } else {
-    res.send(jsonResponse.response)
+    res.send(jsonResponse)
   }
 });
 
