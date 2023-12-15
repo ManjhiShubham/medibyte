@@ -30,7 +30,7 @@ const salesOrderItemSchema = new mongoose.Schema({
 });
 
 // Create the model
-const SalesOrderItem = mongoose.model("SalesOrderItem", salesOrderItemSchema);
+const SalesOrderItem = mongoose.model("sales_order_items", salesOrderItemSchema, "sales_order_items");
 
 // Export the model
 module.exports = SalesOrderItem;

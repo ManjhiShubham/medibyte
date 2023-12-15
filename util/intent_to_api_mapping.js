@@ -11,3 +11,4 @@ const mapping = {
     }
   }
 };
+module.exports= mapping
