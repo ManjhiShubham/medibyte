@@ -16,7 +16,9 @@ const port = process.env.PORT || 5000;
 
 app.set("views", "views");
 
+const botRoute = require("./routes/index");
 const userRoutes = require("./routes/users");
+const appointmentRoutes = require("./routes/appointment");
 
 const salesOrderRoutes = require("./routes/sales_order");
 
@@ -27,6 +29,8 @@ app.use(express.static("public"));
 app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
+
+app.use("/appointment", appointmentRoutes);
 
 app.use("/users", userRoutes);
 
