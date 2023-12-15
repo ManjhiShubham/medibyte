@@ -13,14 +13,14 @@ module.exports = {
         {
           get_active_orders: {
             Response_format: {
-              intent: "name of intent",
-              subIntent:"name of sub intent"
+              intent: ["name of intent"],
+              subIntent:["name of sub intent"]
             }
           },
           get_last_n_orders: {
             Response_format:{
-              intent:'name of intent',
-              subIntent:'name of subintent',
+              intent:['name of intent'],
+              subIntent:['name of subintent'],
               params:{
                 past_days: 'number of days'
               }
@@ -28,12 +28,11 @@ module.exports = {
           },
           get_order_detail_by_id:{
             Response_format:{
-              intent:'name of intent',
-              subIntent:'name of subintent',
+              intent:['name of intent'],
+              subIntent:['name of subintent'],
               params:{
                 order_id: 'order id provided by user which is number'
               }
-              
             }
           }
         }
@@ -42,9 +41,8 @@ module.exports = {
     {
       intent: 'abstract',
       Response_format:{
-        intent:'abstract',
+        intent:['abstract'],
         response:"generate response, suppose you are a virtual doctor Ai and generate response, for this type, carefully try to understand the question and answer the generic recommendation and suggestions as response"
-        
       }
     }
   ],
