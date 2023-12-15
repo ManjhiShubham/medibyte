@@ -11,7 +11,7 @@ class Assistant {
                     "offer":[deals, discounts, coupons],
                     "browsing":[deals, search, find_cure],
                     "feedback":["order_feedback","delivery_feedback","website_feedaback"]
-                    } output should be js object without don't send result as string`;
+                    } output should be js object without don't send result as string.`;
     this.conversationScript = [
       {
         role: "user",

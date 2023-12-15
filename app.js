@@ -20,17 +20,19 @@ const userRoutes = require("./routes/users");
 
 const salesOrderRoutes = require("./routes/sales_order");
 
+const botRoutes = require("./routes/index");
+
 app.use(express.static("public"));
 
 app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/", userRoutes);
-
 app.use("/users", userRoutes);
 
 app.use("/orders", salesOrderRoutes);
+
+app.use("/", botRoutes);
 
 db.on("error", console.error.bind(console, "connection error: "));
 db.once("open", function () {

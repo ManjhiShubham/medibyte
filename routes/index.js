@@ -1,9 +1,6 @@
 var express = require("express");
 var router = express.Router();
 
-const SalesOrder = require("../model/salesOrder");
-const SalesorderItems = require("../model/salesOrderItem");
-
 var Assistant = require("../chatbot/index");
 const assistant = new Assistant();
 assistant.initializeChat();
